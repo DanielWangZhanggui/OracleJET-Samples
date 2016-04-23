@@ -21,7 +21,8 @@
     "test",
     "tests"
   ],
-  "dependencies": {"text": "2.0.15",
+  "dependencies": {
+    "text": "~2.0.12",
     "oraclejet": "~2.0.1"
   }
 }
