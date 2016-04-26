@@ -56,21 +56,27 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojbutton', '
             oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
             var router = oj.Router.rootInstance;
             router.configure({
-                'books': {label: 'Books', value: 'books', isDefault: true},
-                'authors': {label: 'Authors', value: 'authors', isDefault: false},
-                'collections': {
-                    label: 'Collections',
-                    value: 'collections',
+                'books': {
+                    label: 'Books', 
+                    value: 'books', 
+                    isDefault: true},
+                'authors': {
+                    label: 'Authors', 
+                    value: 'authors', 
+                    isDefault: false},
+                'administration': {
+                    label: 'Admin',
+                    value: 'administration',
                     canEnter: function () {
-                        console.log('yes, you may enter the Collections page');
+                        console.log('yes, you may enter the Admin page');
                         return true;
                     },
                     enter: function () {
-                        console.log('you have entered the Collections page');
+                        console.log('you have entered the Admin page');
 
                     },
                     exit: function () {
-                        console.log('Thanks for visting the Collections page');
+                        console.log('Thanks for visting the Admin page');
                     }
                 }
             });

@@ -11,7 +11,7 @@ define(['ojs/ojcore', 'knockout'
 
         self.handleActivated = function () {
             //Change the page title as the new module is loaded so that 
-            //Assistive technology can read the proper page title out
+            //Assistive technology can read the proper page title
             document.title = "ojRouter - Books";
         };
 
