@@ -15,14 +15,6 @@ define(['ojs/ojcore', 'knockout'
             document.title = "ojRouter - Books";
         };
 
-        self.canEnter = function () {
-            // Use this router lifecycle method to determine if the page can be
-            // entered. This could be a place to check authorization to access the
-            // page and deny entry if not authorized. Return true or false.
-            return true;
-        };
-
-
         self.canExit = function () {
             // Use this router lifecycle method to tell the router
             // if it's ok to leave this page. As an example, you may want to stop
