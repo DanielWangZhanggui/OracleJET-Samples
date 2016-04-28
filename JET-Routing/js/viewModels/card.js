@@ -15,6 +15,10 @@ define(['ojs/ojcore', 'knockout'
             self.books = params.books();
         };
         
+        self.loadBookDetails = function(){
+            
+        };
+        
 
     }
 

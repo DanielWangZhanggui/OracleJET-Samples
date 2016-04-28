@@ -40,7 +40,8 @@ and open the template in the editor.
                     </div>
                     <div id="appNav" class="oj-flex-item" data-bind="ojComponent: {component: 'ojNavigationList',
                                 drillMode: 'none',
-                                selection: router.stateId,
+                                beforeSelect: selectHandler,
+                                selection: router.stateId(),
                                 navigationLevel: 'application',
                                 edge: 'top'}">
                         <ul>

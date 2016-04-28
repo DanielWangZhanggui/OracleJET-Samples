@@ -89,33 +89,42 @@ require(['ojs/ojcore',
                     },
                     enter: function () {
                         console.log('you have entered the Admin page');
-
                     },
                     exit: function () {
                         console.log('Thanks for visting the Admin page');
                     }
                 }
             });
-
             function headerViewModel() {
                 var self = this;
                 self.router = router;
                 self.admin = ko.observable("");
+
+                /*
+                 * This is being provided as a workaround for an existing bug in 
+                 * ojNavigationList component that doesn't handle a failed
+                 * ojRouter lifecycle method properly
+                 */
+                self.selectHandler = function (event, ui) {
+                    if ('appNav' === event.target.id && event.originalEvent) {
+                        // router takes care of changing the selection
+                        event.preventDefault();
+                        // Invoke go() with the selected item.
+                        self.router.go(ui.key);
+                    }
+                };
             }
 
             function mainViewModel() {
                 var self = this;
                 self.router = router;
-
             }
 
             var hvm = new headerViewModel();
             var mvm = new mainViewModel();
-
             oj.Router.sync().then(function () {
                 ko.applyBindings(hvm, document.getElementById('header'));
                 ko.applyBindings(mvm, document.getElementById('mainContent'));
-
                 //This is used to stop the partial page loading ugliness.
                 $('#navBar').show();
             });
