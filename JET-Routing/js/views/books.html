@@ -23,10 +23,10 @@
     </div>
 </div>
 <div class="oj-flex-item oj-panel oj-margin oj-flex">
-    <!-- ko ojModule: {name: layout.stateId(), params: $data} --> 
+    <!-- ko if:dataReady -->
+        <!-- ko ojModule: {name: layout.stateId(), params: $data} --> 
+        <!-- /ko -->
     <!-- /ko -->
-    
-    
-    <!-- $root.large() ? 'all' : 'icons', -->
-    
+
+
 </div>

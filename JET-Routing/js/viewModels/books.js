@@ -12,21 +12,27 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojbutton', 'ojs/ojrouter'],
                 self.books = ko.observableArray([]);
                 self.layoutType = ko.observable('card');
                 self.layout = null;
+                self.dataReady = ko.observable(false); 
 
-                if (!parentRouter) {
                     var parentRouter = params.ojRouter.parentRouter;
+                    
+                    /*
+                     * TODO:  Which is the best practice when working with child
+                     * routers? destroy and create new each time, or write an if
+                     * block to see if the child already exists?
+                     */
+                    
 
-                    if (parentRouter.getChildRouter('layout')) {
-                        self.layout = parentRouter.getChildRouter('layout');
-                    } else {
-                        self.layout = parentRouter.createChildRouter('layout')
+//                    if (parentRouter.getChildRouter('layout')) {
+//                        self.layout = parentRouter.getChildRouter('layout');
+//                    } else {
+                      self.layout = parentRouter.createChildRouter('layout')
                                 .configure(
                                         {
-                                            'card': {label: 'card', value: 'card', isDefault: true},
-                                            'list': {label: 'list', value: 'list', isDefault: false}
+                                            'card': {label: 'Card', value: 'card', isDefault: true},
+                                            'list': {label: 'List', value: 'list', isDefault: false}
                                         });
-                    }
-                }
+//                    }
 
                 self.handleActivated = function () {
                     //Change the page title as the new module is loaded so that 
@@ -38,8 +44,13 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojbutton', 'ojs/ojrouter'],
                             self.books().push({"title": val.TITLE});
                         });
                         self.books.valueHasMutated();
+                        self.dataReady(true);
                     });
-
+                    
+                    /*
+                     * Once all of the JavaScript is loaded, sync the Router to
+                     * contain the new childer router definitions from above
+                     */
                     oj.Router.sync();
                 };
 
@@ -50,9 +61,9 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojbutton', 'ojs/ojrouter'],
                     return true;
                 };
 
-//                self.dispose = function(){
-//                    this.router.dispose();
-//                };
+                self.dispose = function(){
+                    self.layout.dispose();
+                };
 
             }
 
