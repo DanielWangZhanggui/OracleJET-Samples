@@ -9,6 +9,10 @@ define(['ojs/ojcore', 'knockout'
     function authorsContentViewModel() {
         var self = this;
 
+        self.sendToSpace = function(){
+            $('#appNav').ojNavigationList('option', 'selection', '');
+        };
+
         self.handleActivated = function () {
             //Change the page title as the new module is loaded so that 
             //Assistive technology can read the proper page title out

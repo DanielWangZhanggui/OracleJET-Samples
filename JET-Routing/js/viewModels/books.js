@@ -11,44 +11,37 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojbutton', 'ojs/ojrouter'],
                 var self = this;
                 self.books = ko.observableArray([]);
                 self.layoutType = ko.observable('card');
+                self.layout = null;
 
                 if (!parentRouter) {
                     var parentRouter = params.ojRouter.parentRouter;
 
                     if (parentRouter.getChildRouter('layout')) {
-                        this.router = parentRouter.getChildRouter('layout');
+                        self.layout = parentRouter.getChildRouter('layout');
                     } else {
-                        this.router = parentRouter.createChildRouter('layout')
+                        self.layout = parentRouter.createChildRouter('layout')
                                 .configure(
                                         {
-                                            'card': {label: 'Card', isDefault: true},
-                                            'list': {label: 'List'}
+                                            'card': {label: 'card', value: 'card', isDefault: true},
+                                            'list': {label: 'list', value: 'list', isDefault: false}
                                         });
                     }
                 }
-//    function mergeConfig(original)
-//    {
-//        return $.extend(true, {}, original,
-//                {
-//                    'params': {'data': empArray}
-//                });
-//    }
-//
-//    this.moduleConfig = mergeConfig(this.router.moduleConfig);
-
 
                 self.handleActivated = function () {
                     //Change the page title as the new module is loaded so that 
                     //Assistive technology can read the proper page title
                     document.title = "ojRouter - Books";
-                };
 
-                self.allData = $.getJSON('js/data/productData.json').then(function (data) {
-                    $.each(data, function (idx, val) {
-                        self.books().push({"title": val.TITLE});
+                    self.allData = $.getJSON('js/data/productData.json').then(function (data) {
+                        $.each(data, function (idx, val) {
+                            self.books().push({"title": val.TITLE});
+                        });
+                        self.books.valueHasMutated();
                     });
-                    self.books.valueHasMutated();
-                });
+
+                    oj.Router.sync();
+                };
 
                 self.canExit = function () {
                     // Use this router lifecycle method to tell the router
@@ -56,11 +49,11 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojbutton', 'ojs/ojrouter'],
                     // the user from leaving the page if there is a form that hasn't been saved.
                     return true;
                 };
-                
+
 //                self.dispose = function(){
 //                    this.router.dispose();
 //                };
-                
+
             }
 
             return booksContentViewModel;
