@@ -8,9 +8,12 @@ define(['ojs/ojcore', 'knockout'
      */
     function authorsContentViewModel() {
         var self = this;
+        
+        var router = oj.Router.rootInstance;
 
         self.sendToSpace = function(){
-            $('#appNav').ojNavigationList('option', 'selection', '');
+//            $('#appNav').ojNavigationList('option', 'selection', '');
+            router.go("books/list");
         };
 
         self.handleActivated = function () {
