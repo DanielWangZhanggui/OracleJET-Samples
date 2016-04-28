@@ -8,3 +8,7 @@ and open the template in the editor.
     Author     : jabrock
 */
 
+.demo-centering-container {
+    text-align: center;
+    padding: 0;
+}
