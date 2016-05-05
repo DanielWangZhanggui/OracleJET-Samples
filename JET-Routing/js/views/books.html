@@ -1,7 +1,7 @@
 <div class="oj-flex-item oj-flex-bar">
     <div class="oj-flex-bar-end">
         <div class="oj-flex-items oj-sm-2 oj-margin">
-            <div id="layoutSet" aria-label="Choose layout type." data-bind="ojComponent: {component: 'ojButtonset', checked: layout.stateId}">
+            <div id="layoutSet" aria-label="Choose layout type." data-bind="ojComponent: {component: 'ojButtonset', checked: router.stateId}">
                 <label for="cardLayout"></label>
                 <input id="cardLayout" type="radio" name="layoutGroup" value="card"
                        data-bind="ojComponent: {
@@ -24,7 +24,7 @@
 </div>
 <div class="oj-flex-item oj-panel oj-margin oj-flex">
     <!-- ko if:dataReady -->
-        <!-- ko ojModule: {name: layout.stateId(), params: $data} --> 
+        <!-- ko ojModule: moduleConfig --> 
         <!-- /ko -->
     <!-- /ko -->
 

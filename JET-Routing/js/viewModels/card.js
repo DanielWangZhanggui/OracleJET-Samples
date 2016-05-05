@@ -10,15 +10,20 @@ define(['ojs/ojcore', 'knockout'
      */
     function cardContentViewModel(params) {
         var self = this;
-        
-        self.handleActivated = function(){
+
+        self.handleActivated = function () {
             self.books = params.books();
         };
-        
-        self.loadBookDetails = function(){
-            
+
+        self.loadBookDetails = function (event, ui)
+        {
+            if (ui.option === 'currentItem' && ui.value != null)
+            {
+                params.ojRouter.parentRouter.go('view/' + ui.value);
+            }
         };
-        
+
+
 
     }
 

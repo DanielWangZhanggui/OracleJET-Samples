@@ -11,28 +11,53 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojbutton', 'ojs/ojrouter'],
                 var self = this;
                 self.books = ko.observableArray([]);
                 self.layoutType = ko.observable('card');
-                self.layout = null;
-                self.dataReady = ko.observable(false); 
+                self.dataReady = ko.observable(false);
 
-                    var parentRouter = params.ojRouter.parentRouter;
-                    
-                    /*
-                     * TODO:  Which is the best practice when working with child
-                     * routers? destroy and create new each time, or write an if
-                     * block to see if the child already exists?
-                     */
-                    
+                var parentRouter = params.ojRouter.parentRouter;
+
+                /*
+                 * TODO:  Which is the best practice when working with child
+                 * routers? destroy and create new each time, or write an if
+                 * block to see if the child already exists?
+                 */
+
 
 //                    if (parentRouter.getChildRouter('layout')) {
 //                        self.layout = parentRouter.getChildRouter('layout');
 //                    } else {
-                      self.layout = parentRouter.createChildRouter('layout')
-                                .configure(
-                                        {
-                                            'card': {label: 'Card', value: 'card', isDefault: true},
-                                            'list': {label: 'List', value: 'list', isDefault: false}
-                                        });
+                self.router = parentRouter.createChildRouter('layout')
+                        .configure(
+                                {
+                                    'card': {label: 'Card', value: 'card', isDefault: false},
+                                    'list': {label: 'List', value: 'list', isDefault: true}
+                                });
 //                    }
+
+                self.bookRouter = parentRouter.createChildRouter('book').configure(function (stateId)
+                {
+                    var state;
+
+                    if (stateId) {
+                        state = new oj.RouterState(stateId,
+                                {
+                                    enter: function () {
+                                        return self.loadData(stateId);
+                                    },
+                                    value: stateId
+                                },
+                                self.router);
+                    }
+                    return state;
+                });
+                
+                
+                function mergeConfig(original)
+                {
+                    return $.extend(true, {}, original,
+                            {
+                                'params': {'data': self.allData, 'books': self.books}
+                            });
+                }
 
                 self.handleActivated = function () {
                     //Change the page title as the new module is loaded so that 
@@ -46,7 +71,9 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojbutton', 'ojs/ojrouter'],
                         self.books.valueHasMutated();
                         self.dataReady(true);
                     });
-                    
+
+                    self.moduleConfig = mergeConfig(self.router.moduleConfig);
+
                     /*
                      * Once all of the JavaScript is loaded, sync the Router to
                      * contain the new childer router definitions from above
@@ -61,8 +88,8 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojbutton', 'ojs/ojrouter'],
                     return true;
                 };
 
-                self.dispose = function(){
-                    self.layout.dispose();
+                self.dispose = function () {
+                    self.router.dispose();
                 };
 
             }

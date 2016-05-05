@@ -1,5 +1,5 @@
 <div class="oj-flex-item oj-flex oj-sm-justify-content-flex-center  demo-centering-container">
-    <ul data-bind="ojComponent: {component: 'ojListView'}">
+    <ul data-bind="ojComponent: {component: 'ojListView', optionChange: gotoContent}">
         <!-- ko foreach: books -->
         <li >
             <div style="text-align: start" data-bind="text: title"></div>
