@@ -13,7 +13,7 @@ define(['ojs/ojcore', 'knockout'
 
         self.sendToSpace = function(){
 //            $('#appNav').ojNavigationList('option', 'selection', '');
-            router.go("books/list");
+            router.go("books/list/ui-id-5");
         };
 
         self.handleActivated = function () {

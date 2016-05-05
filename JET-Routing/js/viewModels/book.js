@@ -8,26 +8,26 @@ define(['ojs/ojcore', 'knockout'
      */
     function bookContentViewModel(params) {
         var self = this;
-
+        console.log('book.js called')
         // Create and configure the router for this model, the name is 'id'
-        self.router = params.ojRouter.parentRouter.createChildRouter('id');
-
-        self.router.configure(function (stateId)
-        {
-            var state;
-
-            if (stateId) {
-                state = new oj.RouterState(stateId,
-                        {
-                            enter: function () {
-                                return self.loadData(stateId);
-                            },
-                            value: stateId
-                        },
-                        self.router);
-            }
-            return state;
-        });
+//        self.router = params.ojRouter.parentRouter.createChildRouter('id');
+//
+//        self.router.configure(function (stateId)
+//        {
+//            var state;
+//
+//            if (stateId) {
+//                state = new oj.RouterState(stateId,
+//                        {
+//                            enter: function () {
+//                                //return self.loadData(stateId);
+//                            },
+//                            value: stateId
+//                        },
+//                        self.router);
+//            }
+//            return state;
+//        });
 
         // This is where the data will be stored.
         this.emp = ko.observable();
@@ -43,7 +43,7 @@ define(['ojs/ojcore', 'knockout'
         
         
         self.dispose = function(){
-            self.router.dispose();
+            //self.router.dispose();
         };
         
     }

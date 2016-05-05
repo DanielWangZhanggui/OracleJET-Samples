@@ -28,28 +28,28 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojbutton', 'ojs/ojrouter'],
                 self.router = parentRouter.createChildRouter('layout')
                         .configure(
                                 {
-                                    'card': {label: 'Card', value: 'card', isDefault: false},
-                                    'list': {label: 'List', value: 'list', isDefault: true}
+                                    'card': {label: 'Card', value: 'card', isDefault: true},
+                                    'list': {label: 'List', value: 'list', isDefault: false}
                                 });
 //                    }
 
-                self.bookRouter = parentRouter.createChildRouter('book').configure(function (stateId)
-                {
-                    var state;
-
-                    if (stateId) {
-                        state = new oj.RouterState(stateId,
-                                {
-                                    enter: function () {
-                                        return self.loadData(stateId);
-                                    },
-                                    value: stateId
-                                },
-                                self.router);
-                    }
-                    return state;
-                });
-                
+//                self.bookRouter = self.router.createChildRouter('book').configure(function (stateId)
+//                {
+//                    var state;
+//
+//                    if (stateId) {
+//                        state = new oj.RouterState(stateId,
+//                                {
+//                                    enter: function () {
+//                                        return self.loadData(stateId);
+//                                    },
+//                                    value: stateId
+//                                },
+//                                self.router);
+//                    }
+//                    return state;
+//                });
+//                
                 
                 function mergeConfig(original)
                 {
