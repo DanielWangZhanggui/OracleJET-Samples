@@ -34,7 +34,7 @@ function(oj, ko)
 
     this.goCust = function()
     {
-      oj.Router.rootInstance.go('customer');
+      oj.Router.rootInstance.go('customers');
     };
   }
 

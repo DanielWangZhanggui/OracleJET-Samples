@@ -61,7 +61,7 @@ require(['ojs/ojcore', 'knockout', 'jquery',
                     name: 'Home', id: 'home'
                 },
                 {
-                    name: 'Customer', id: 'customer'
+                    name: 'Customers', id: 'customers'
                 },
                 {
                     name: 'User', id: 'user'
