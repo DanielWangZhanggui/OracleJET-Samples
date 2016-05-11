@@ -2,7 +2,7 @@
 
 <html id="htmldoc" lang="en-US">
 <head>
-  <title>ojRouter ojModule - 3 levels router demo</title>
+  <title>Three level ojRouter with ojModule demo</title>
 
   <meta http-equiv="x-ua-compatible" content="IE=edge"/>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -26,9 +26,12 @@
     <div class="oj-offcanvas-inner-wrapper">
       <!-- off-canvas content -->
       <div id="navDrawer" class="oj-contrast-marker oj-web-applayout-offcanvas oj-offcanvas-start">
-        <div role="navigation" data-bind="ojComponent: {component: 'ojNavigationList',
-          optionChange: drawerChange, navigationLevel: 'application',
-          item: {template: 'navTemplate'}, selection: router.stateId,
+          <div id="appNavDrawer" role="navigation" data-bind="ojComponent: {component: 'ojNavigationList',
+          optionChange: drawerChange, 
+          navigationLevel: 'application',
+          item: {template: 'navTemplate'}, 
+          beforeSelect: selectHandler,
+          selection: router.stateId,
           data: dataSource, edge: 'start'}">
         </div>
       </div>
@@ -56,9 +59,12 @@
                 </div>
               </div>
             </div>
-            <div role="navigation" data-bind="ojComponent: {component: 'ojNavigationList',
-              navigationLevel: 'application', item: {template: 'navTemplate'},
-              selection: router.stateId, data: dataSource, edge: 'top'}"
+            <div id="appNav" role="navigation" data-bind="ojComponent: {component: 'ojNavigationList',
+              navigationLevel: 'application', 
+              item: {template: 'navTemplate'},
+              beforeSelect: selectHandler,
+              selection: router.stateId, 
+              data: dataSource, edge: 'top'}"
               class="oj-web-applayout-navbar oj-sm-only-hide oj-web-applayout-max-width oj-navigationlist-item-dividers oj-md-condense oj-md-justify-content-center oj-lg-justify-content-flex-end">
             </div>
           </header>

@@ -49,7 +49,7 @@ require(['ojs/ojcore', 'knockout', 'jquery',
                 for (i = 0; i < metaData.length; i++)
                 {
                     item = metaData[i];
-                    routerConfig[item.id] = {label: item.name, isDefault: (item.id === 'home')};
+                    routerConfig[item.id] = {label: item.name, isDefault: (item.id === 'home'), canEnter: item.canEnter ? item.canEnter : null};
                 }
 
                 return root.configure(routerConfig);
@@ -64,7 +64,11 @@ require(['ojs/ojcore', 'knockout', 'jquery',
                     name: 'Customers', id: 'customers'
                 },
                 {
-                    name: 'User', id: 'user'
+                    name: 'User', 
+                    id: 'user', 
+                    canEnter: function(){
+                        return true;
+                    }
                 }
             ];
 
@@ -78,6 +82,20 @@ require(['ojs/ojcore', 'knockout', 'jquery',
                 self.appName = 'Router Demo';
 
                 self.router = router;
+
+                /*
+                 * This is being provided as a workaround for an existing bug in 
+                 * ojNavigationList component that doesn't handle a failed
+                 * ojRouter lifecycle method properly
+                 */
+                self.selectHandler = function (event, ui) {
+                    if ( ('appNav' === event.target.id || 'appNavDrawer' === event.target.id) && event.originalEvent) {
+                        // router takes care of changing the selection
+                        event.preventDefault();
+                        // Invoke go() with the selected item.
+                        self.router.go(ui.key);
+                    }
+                };
 
                 // Media Queries for repsonsive header and navigation
                 // Create small screen media query to update nav list orientation and button menu display
