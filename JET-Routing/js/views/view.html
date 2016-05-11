@@ -1,0 +1,38 @@
+<div id="form-container" class="oj-form-layout">
+  <button id="back" data-bind="click: goBack, ojComponent: { component: 'ojButton',
+                               icons: {start: 'oj-fwk-icon-caret-start oj-fwk-icon'},
+                               label: 'Back'}"></button>
+  <div class="oj-form oj-sm-odd-cols-12 oj-md-odd-cols-4 oj-md-labels-inline"
+       data-bind="with: cust">
+    <div class="oj-flex">
+      <div class="oj-flex-item">
+        <label for="name">Name</label>
+      </div>
+      <div class="oj-flex-item">
+        <input id="name"
+               data-bind="ojComponent: {component: 'ojInputText',
+                                        value: name, required: true}">
+      </div>
+    </div>
+    <div class="oj-flex">
+      <div class="oj-flex-item">
+        <label for="job">Job</label>
+      </div>
+      <div class="oj-flex-item">
+        <input id="job"
+               data-bind="ojComponent: {component: 'ojInputText', value: job }">
+      </div>
+    </div>
+    <div class="oj-flex">
+      <div class="oj-flex-item">
+        <label  for="sal">Salary</label>
+      </div>
+      <div class="oj-flex-item">
+        <input id="sal"
+               data-bind="ojComponent: {component: 'ojInputText', value: sal }">
+      </div>
+    </div>
+  </div>
+  <button data-bind="click: gotoOrders, ojComponent: { component: 'ojButton',
+                                 label: 'Show Orders'}"></button>
+</div>

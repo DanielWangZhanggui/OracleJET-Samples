@@ -1,62 +1,32 @@
-/**
- * list module
- */
-define(['ojs/ojcore', 'knockout'
-], function (oj, ko) {
-    /**
-     * The view model for the main content view template
-     */
-    function listContentViewModel(params) {
-        var self = this;
-        self.books = params.books();
-        self.router = params.ojRouter;
-        self.moduleConfig = ko.observable();
-        // var original = params.ojRouter.parentRouter.moduleConfig;
+define(['ojs/ojcore', 'knockout', 'ojs/ojknockout', 'ojs/ojlistview', 'ojs/ojarraytabledatasource',
+        'ojs/ojrouter'],
+function(oj, ko)
+{
+  function viewModel(params)
+  {
+    this.dataSource = new oj.ArrayTableDataSource(params.data, {idAttribute: 'id'});
 
-        self.bookRouter = self.router.parentRouter.createChildRouter('book').configure(function (stateId)
-        {
-            var state;
+    this.handleActivated = function()
+    {
+      // Now that the router for this view exist, synchronise it with the URL
+      return oj.Router.sync().
+      then(
+         null,
+         function(error) {
+            oj.Logger.error('Error during refresh: ' + error.message);
+         }
+      );
+    };
 
-            if (stateId) {
-                state = new oj.RouterState(stateId,
-                        {
-                            enter: function () {
-                                console.log('book router entered');
-                            },
-                            value: stateId
-                        },
-                        self.bookRouter);
-            }
-            return state;
-        });
+    this.gotoContent = function(event, ui)
+    {
+      if (ui.option === 'currentItem' && ui.value != null)
+      {
+        params.ojRouter.parentRouter.go(ui.value.toString());
+      }
+    };
+  }
 
-
-        function mergeConfig(original, value)
-        {
-            return $.extend(true, {}, original,
-                    {
-                        'params': {'myId': value}
-                    });
-        }
-
-        self.gotoContent = function (event, ui) {
-            if (ui.option === 'currentItem' && ui.value != null)
-            {
-               self.moduleConfig(mergeConfig(self.bookRouter.moduleConfig, ui.value));
-               self.bookRouter.go(ui.value);
-            }
-        };
-        
-        self.handleActivated = function(){
-            oj.Router.sync();
-        };
-        
-        self.dispose = function(){
-            self.bookRouter.dispose();
-        }
-        
-    }
-
-    return listContentViewModel;
+  // Return constructor function
+  return viewModel;
 });
-

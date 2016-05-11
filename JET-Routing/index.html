@@ -1,62 +1,77 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>Oracle JET ojRouter Demo</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="css/images/favicon.ico">
-        <link href="bower_components/oraclejet/dist/css/alta/oj-alta-min.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="css/overrides.css" type="text/css"/>
 
-        <!-- RequireJS configuration file -->
-        <script data-main="js/main" src="bower_components/requirejs/require.js"></script>
-    </head>
-    <body>
-        <header id="header" class="oj-header-border oj-margin">   
-            <div id="navBar" class="oj-flex-bar oj-sm-align-items-flex-start oj-flex-items-pad" style="display: none">
-                <div class="oj-flex-bar-start" style="height: 21px">
-                    <img src="css/images/oracle_logo_lrg.png" alt="oracle logo"/>
-                </div>
-                <div class="oj-flex-bar-middle oj-sm-justify-content-center">
-                    <h1>Oracle JET ojRouter</h1>
-                </div>
-                <div class="oj-flex-bar-end oj-flex oj-sm-flex-direction-column">
-                    <div class="oj-flex-item oj-margin">
-                        <div id="checkboxSetAgreeId" aria-label="Administrator"
-                             data-bind=
-                             "ojComponent: {
-                            component: 'ojCheckboxset', 
-                            value: admin}" >
-                            <span class="oj-choice-row">
-                                <input id="adminCheckbox" type="checkbox" value="admin">
-                                <label for="adminCheckbox"> I am an Administrator</label>
-                            </span>
-                        </div>
-                    </div>
-                    <div id="appNav" class="oj-flex-item" data-bind="ojComponent: {component: 'ojNavigationList',
-                                drillMode: 'none',
-                                beforeSelect: selectHandler,
-                                selection: router.stateId(),
-                                navigationLevel: 'application',
-                                edge: 'top'}">
-                        <ul>
-                            <!-- ko foreach: router.states -->
-                            <li data-bind="attr:{'id':value}">
-                                <a href="#" data-bind="text: label"></a>
-                            </li>
-                            <!-- /ko -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <div id="mainContent" class="oj-flex">
-            <div class="oj-flex-item" data-bind="ojModule: router.moduleConfig"></div>
+<html id="htmldoc" lang="en-US">
+<head>
+  <title>ojRouter ojModule - 3 levels router demo</title>
+
+  <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="initial-scale=1.0"/>
+  <link href="css/images/favicon.ico" rel="icon">
+
+  <!-- base href="/" /-->
+
+  <link rel="stylesheet" href="css/libs/oj/v2.1.0/alta/oj-alta-min.css">
+
+  <script data-main="js/app" src="js/libs/require/require.js"></script>
+</head>
+<body>
+  <!-- template for rendering navigation items -->
+  <script type="text/html" id="navTemplate">
+    <li><a href="#">
+      <!-- ko text: $data['name'] --> <!--/ko-->
+    </a></li>
+  </script>
+  <div id="page" class="oj-web-applayout-offcanvas-wrapper oj-offcanvas-outer-wrapper">
+    <div class="oj-offcanvas-inner-wrapper">
+      <!-- off-canvas content -->
+      <div id="navDrawer" class="oj-contrast-marker oj-web-applayout-offcanvas oj-offcanvas-start">
+        <div role="navigation" data-bind="ojComponent: {component: 'ojNavigationList',
+          optionChange: drawerChange, navigationLevel: 'application',
+          item: {template: 'navTemplate'}, selection: router.stateId,
+          data: dataSource, edge: 'start'}">
         </div>
-    </body>
+      </div>
+      <div class="oj-web-applayout-scrollable-wrapper">
+        <div class="oj-web-applayout-scrollable oj-web-applayout-page">
+          <header role="banner" class="oj-web-applayout-header">
+            <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center">
+              <!-- Offcanvas toggle button -->
+              <div class="oj-flex-bar-start oj-md-hide">
+                <button class="oj-button-lg" data-bind="click: toggleDrawer,
+                  ojComponent: {component:'ojButton', label: 'Application Navigation',
+                  chroming: 'half', display: 'icons', icons: {start: 'oj-web-applayout-offcanvas-icon'}}">
+                </button>
+              </div>
+              <div data-bind="css: smScreen() ? 'oj-flex-bar-center-absolute' : 'oj-flex-bar-middle oj-sm-align-items-baseline'">
+                <span class="oj-web-applayout-header-title" title="Application Name" data-bind="text: appName"></span>
+              </div>
+              <div class="oj-flex-bar-end">
+                <!-- Responsive Toolbar -->
+                <div data-bind="ojComponent: {component:'ojToolbar'}">
+                  <button data-bind="ojComponent: {component:'ojButton',
+                    label: 'Search', display: 'icons', chroming: 'half',
+                    icons: {start:'oj-fwk-icon-magnifier oj-fwk-icon'}}">
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div role="navigation" data-bind="ojComponent: {component: 'ojNavigationList',
+              navigationLevel: 'application', item: {template: 'navTemplate'},
+              selection: router.stateId, data: dataSource, edge: 'top'}"
+              class="oj-web-applayout-navbar oj-sm-only-hide oj-web-applayout-max-width oj-navigationlist-item-dividers oj-md-condense oj-md-justify-content-center oj-lg-justify-content-flex-end">
+            </div>
+          </header>
+          <div class="oj-web-applayout-content oj-web-applayout-max-width">
+            <div class="oj-flex oj-flex-items-pad">
+              <div class="oj-flex-item">
+                <div id="content" role="main" class="oj-panel" data-bind="ojModule: router.moduleConfig"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 </html>

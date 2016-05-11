@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Oracle JET ojRouter Demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="css/images/favicon.ico">
+        <link href="bower_components/oraclejet/dist/css/alta/oj-alta-min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="css/overrides.css" type="text/css"/>
+
+        <!-- RequireJS configuration file -->
+        <script data-main="js/main" src="bower_components/requirejs/require.js"></script>
+    </head>
+    <body>
+        <header id="header" class="oj-header-border oj-margin">   
+            <div id="navBar" class="oj-flex-bar oj-sm-align-items-flex-start oj-flex-items-pad" style="display: none">
+                <div class="oj-flex-bar-start" style="height: 21px">
+                    <img src="css/images/oracle_logo_lrg.png" alt="oracle logo"/>
+                </div>
+                <div class="oj-flex-bar-middle oj-sm-justify-content-center">
+                    <h1>Oracle JET ojRouter</h1>
+                </div>
+                <div class="oj-flex-bar-end oj-flex oj-sm-flex-direction-column">
+                    <div class="oj-flex-item oj-margin">
+                        <div id="checkboxSetAgreeId" aria-label="Administrator"
+                             data-bind=
+                             "ojComponent: {
+                            component: 'ojCheckboxset', 
+                            value: admin}" >
+                            <span class="oj-choice-row">
+                                <input id="adminCheckbox" type="checkbox" value="admin">
+                                <label for="adminCheckbox"> I am an Administrator</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div id="appNav" class="oj-flex-item" data-bind="ojComponent: {component: 'ojNavigationList',
+                                drillMode: 'none',
+                                beforeSelect: selectHandler,
+                                selection: router.stateId(),
+                                navigationLevel: 'application',
+                                edge: 'top'}">
+                        <ul>
+                            <!-- ko foreach: router.states -->
+                            <li data-bind="attr:{'id':value}">
+                                <a href="#" data-bind="text: label"></a>
+                            </li>
+                            <!-- /ko -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="mainContent" class="oj-flex">
+            <div class="oj-flex-item" data-bind="ojModule: router.moduleConfig"></div>
+        </div>
+    </body>
+</html>
