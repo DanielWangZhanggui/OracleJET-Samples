@@ -49,7 +49,14 @@ require(['ojs/ojcore', 'knockout', 'jquery',
                 for (i = 0; i < metaData.length; i++)
                 {
                     item = metaData[i];
-                    routerConfig[item.id] = {label: item.name, isDefault: (item.id === 'home'), canEnter: item.canEnter ? item.canEnter : null};
+                    routerConfig[item.id] = 
+                            {
+                                name: item.name,
+                                isDefault: (item.id === 'home'), 
+                                canEnter: item.canEnter ? item.canEnter : null,
+                                enter: item.enter ? item.enter : null,
+                                exit: item.exit ? item.exit : null
+                            };
                 }
 
                 return root.configure(routerConfig);
