@@ -71,8 +71,8 @@ require(['ojs/ojcore', 'knockout', 'jquery',
                     name: 'Customers', id: 'customers'
                 },
                 {
-                    name: 'User', 
-                    id: 'user', 
+                    name: 'Admin', 
+                    id: 'admin', 
                     canEnter: function(){
                         return true;
                     }

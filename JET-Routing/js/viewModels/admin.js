@@ -5,7 +5,13 @@ function(oj, ko)
   {
     this.parentRouter = params.ojRouter.parentRouter;
 
-    this.content = 'This is the user module';
+    this.content = 'This is the Admin module';
+    
+    this.canExit = function(){
+        //TODO: add code the verify that everything is good before leaving the page        
+      return true;  
+    };
+    
   }
 
   // Return constructor function
