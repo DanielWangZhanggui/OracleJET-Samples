@@ -7,17 +7,17 @@ requirejs.config(
             baseUrl: window.location.href.split('#')[0].substring(0, window.location.href.split('#')[0].lastIndexOf('/')) + '/js',
             paths:
                     {
-                        'knockout': 'js/libs/knockout/dist/knockout',
-                        'jquery': 'js/libs/jquery/dist/jquery.min',
-                        'jqueryui-amd': 'js/libs/jquery-ui/ui',
-                        'ojs': 'js/libs/oraclejet/dist/js/libs/oj/debug',
-                        'ojL10n': 'js/libs/oraclejet/dist/js/libs/oj/ojL10n',
-                        'ojtranslations': 'js/libs/oraclejet/dist/js/libs/oj/resources',
-                        'text': 'js/libs/text/text',
-                        'promise': 'js/libs/es6-promise/promise.min',
-                        'hammerjs': 'js/libs/hammerjs/hammer.min',
-                        'signals': 'js/libs/js-signals/dist/signals.min',
-                        'ojdnd': 'js/libs/oraclejet/dist/js/libs/dnd-polyfill/dnd-polyfill-1.0.0.min'
+                        'knockout': 'libs/knockout/dist/knockout',
+                        'jquery': 'libs/jquery/dist/jquery.min',
+                        'jqueryui-amd': 'libs/jquery-ui/ui',
+                        'ojs': 'libs/oraclejet/dist/js/libs/oj/debug',
+                        'ojL10n': 'libs/oraclejet/dist/js/libs/oj/ojL10n',
+                        'ojtranslations': 'libs/oraclejet/dist/js/libs/oj/resources',
+                        'text': 'libs/text/text',
+                        'promise': 'libs/es6-promise/promise.min',
+                        'hammerjs': 'libs/hammerjs/hammer.min',
+                        'signals': 'libs/js-signals/dist/signals.min',
+                        'ojdnd': 'libs/oraclejet/dist/js/libs/dnd-polyfill/dnd-polyfill-1.0.0.min'
                     },
             shim:
                     {
