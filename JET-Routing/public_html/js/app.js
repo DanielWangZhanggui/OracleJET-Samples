@@ -7,17 +7,17 @@ requirejs.config(
             baseUrl: window.location.href.split('#')[0].substring(0, window.location.href.split('#')[0].lastIndexOf('/')) + '/js',
             paths:
                     {
-                        'knockout': '../bower_components/knockout/dist/knockout',
-                        'jquery': '../bower_components/jquery/dist/jquery.min',
-                        'jqueryui-amd': '../bower_components/jquery-ui/ui',
-                        'ojs': '../bower_components/oraclejet/dist/js/libs/oj/debug',
-                        'ojL10n': '../bower_components/oraclejet/dist/js/libs/oj/ojL10n',
-                        'ojtranslations': '../bower_components/oraclejet/dist/js/libs/oj/resources',
-                        'text': '../bower_components/text/text',
-                        'promise': '../bower_components/es6-promise/promise.min',
-                        'hammerjs': '../bower_components/hammerjs/hammer.min',
-                        'signals': '../bower_components/js-signals/dist/signals.min',
-                        'ojdnd': '../bower_components/oraclejet/dist/js/libs/dnd-polyfill/dnd-polyfill-1.0.0.min'
+                        'knockout': 'libs/knockout/dist/knockout',
+                        'jquery': 'libs/jquery/dist/jquery.min',
+                        'jqueryui-amd': 'libs/jquery-ui/ui',
+                        'ojs': 'libs/oraclejet/dist/js/libs/oj/debug',
+                        'ojL10n': 'libs/oraclejet/dist/js/libs/oj/ojL10n',
+                        'ojtranslations': 'libs/oraclejet/dist/js/libs/oj/resources',
+                        'text': 'libs/text/text',
+                        'promise': 'libs/es6-promise/promise.min',
+                        'hammerjs': 'libs/hammerjs/hammer.min',
+                        'signals': 'libs/js-signals/dist/signals.min',
+                        'ojdnd': 'libs/oraclejet/dist/js/libs/dnd-polyfill/dnd-polyfill-1.0.0.min'
                     },
             shim:
                     {
@@ -79,8 +79,8 @@ require(['ojs/ojcore', 'knockout', 'jquery',
                     }
                 },
                 {
-                    name: 'User', 
-                    id: 'user', 
+                    name: 'Admin', 
+                    id: 'admin', 
                     canEnter: function(){
                         var licenseAgreement = ko.dataFor(document.getElementById('login')).agreement();
                         if(licenseAgreement == 'agree'){
