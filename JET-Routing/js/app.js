@@ -30,7 +30,7 @@ requirejs.config(
 
 require(['ojs/ojcore', 'knockout', 'jquery',
     'ojs/ojknockout', 'ojs/ojbutton', 'ojs/ojmenu', 'ojs/ojtoolbar', 'ojs/ojnavigationlist',
-    'ojs/ojoffcanvas', 'ojs/ojarraytabledatasource', 'ojs/ojmodule', 'ojs/ojrouter', 'text'],
+    'ojs/ojoffcanvas', 'ojs/ojarraytabledatasource', 'ojs/ojmodule', 'ojs/ojrouter', 'text', 'ojs/ojcheckboxset'],
         function (oj, ko, $)
         {
             'use strict';
@@ -65,16 +65,29 @@ require(['ojs/ojcore', 'knockout', 'jquery',
             // Navigation used for Nav Bar (medium and larger screens) and Nav List (small screens)
             var navData = [
                 {
-                    name: 'Home', id: 'home'
+                    name: 'Home',
+                    id: 'home',
+                    enter: function(){
+                        console.log('entered Home');
+                    }
                 },
                 {
-                    name: 'Customers', id: 'customers'
+                    name: 'Customers',
+                    id: 'customers',
+                    exit: function(){
+                        console.log('exited customer');
+                    }
                 },
                 {
                     name: 'User', 
                     id: 'user', 
                     canEnter: function(){
+                        var licenseAgreement = ko.dataFor(document.getElementById('login')).agreement();
+                        if(licenseAgreement == 'agree'){
                         return true;
+                    } else {
+                        return false;
+                    }
                     }
                 }
             ];
@@ -85,6 +98,7 @@ require(['ojs/ojcore', 'knockout', 'jquery',
             {
                 var self = this;
 
+                self.agreement = ko.observable('checked');
                 // Application Name used in header
                 self.appName = 'Router Demo';
 

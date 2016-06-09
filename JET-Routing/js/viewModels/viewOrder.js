@@ -36,6 +36,12 @@ function(oj, ko)
     {
       oj.Router.rootInstance.go('customers');
     };
+    
+    this.canExit = function()
+    {
+        console.log('can exit viewOrder');
+        return true;
+    };
   }
 
   // Return constructor function

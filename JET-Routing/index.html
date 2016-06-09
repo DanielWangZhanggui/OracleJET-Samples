@@ -1,83 +1,96 @@
 <!DOCTYPE html>
 
 <html id="htmldoc" lang="en-US">
-<head>
-  <title>Three level ojRouter with ojModule demo</title>
+    <head>
+        <title>Three level ojRouter with ojModule demo</title>
 
-  <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <meta name="viewport" content="initial-scale=1.0"/>
-  <link href="css/images/favicon.ico" rel="icon">
+        <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="initial-scale=1.0"/>
+        <link href="css/images/favicon.ico" rel="icon">
 
-  <!-- base href="/" /-->
+        <!-- base href="/" /-->
 
-  <link href="bower_components/oraclejet/dist/css/alta/oj-alta-min.css" rel="stylesheet" type="text/css"/>
+        <link href="bower_components/oraclejet/dist/css/alta/oj-alta-min.css" rel="stylesheet" type="text/css"/>
 
-  <script data-main="js/app" src="bower_components/requirejs/require.js"></script>
-</head>
-<body>
-  <!-- template for rendering navigation items -->
-  <script type="text/html" id="navTemplate">
-    <li><a href="#">
-      <!-- ko text: $data['name'] --> <!--/ko-->
-    </a></li>
-  </script>
-  <div id="page" class="oj-web-applayout-offcanvas-wrapper oj-offcanvas-outer-wrapper">
-    <div class="oj-offcanvas-inner-wrapper">
-      <!-- off-canvas content -->
-      <div id="navDrawer" class="oj-contrast-marker oj-web-applayout-offcanvas oj-offcanvas-start">
-          <div id="appNavDrawer" role="navigation" data-bind="ojComponent: {component: 'ojNavigationList',
+        <script data-main="js/app" src="bower_components/requirejs/require.js"></script>
+    </head>
+    <body>
+        <!-- template for rendering navigation items -->
+        <script type="text/html" id="navTemplate">
+        <li><a href="#">
+                <!-- ko text: $data['name'] --> <!--/ko-->
+            </a></li>
+    </script>
+    <div id="page" class="oj-web-applayout-offcanvas-wrapper oj-offcanvas-outer-wrapper">
+        <div class="oj-offcanvas-inner-wrapper">
+            <!-- off-canvas content -->
+            <div id="navDrawer" class="oj-contrast-marker oj-web-applayout-offcanvas oj-offcanvas-start">
+                <div id="appNavDrawer" role="navigation" data-bind="ojComponent: {component: 'ojNavigationList',
           optionChange: drawerChange, 
           navigationLevel: 'application',
           item: {template: 'navTemplate'}, 
           beforeSelect: selectHandler,
           selection: router.stateId,
           data: dataSource, edge: 'start'}">
-        </div>
-      </div>
-      <div class="oj-web-applayout-scrollable-wrapper">
-        <div class="oj-web-applayout-scrollable oj-web-applayout-page">
-          <header role="banner" class="oj-web-applayout-header">
-            <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center">
-              <!-- Offcanvas toggle button -->
-              <div class="oj-flex-bar-start oj-md-hide">
-                <button class="oj-button-lg" data-bind="click: toggleDrawer,
+                </div>
+            </div>
+            <div class="oj-web-applayout-scrollable-wrapper">
+                <div class="oj-web-applayout-scrollable oj-web-applayout-page">
+                    <header role="banner" class="oj-web-applayout-header">
+                        <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center">
+                            <!-- Offcanvas toggle button -->
+                            <div class="oj-flex-bar-start oj-md-hide">
+                                <button class="oj-button-lg" data-bind="click: toggleDrawer,
                   ojComponent: {component:'ojButton', label: 'Application Navigation',
                   chroming: 'half', display: 'icons', icons: {start: 'oj-web-applayout-offcanvas-icon'}}">
-                </button>
-              </div>
-              <div data-bind="css: smScreen() ? 'oj-flex-bar-center-absolute' : 'oj-flex-bar-middle oj-sm-align-items-baseline'">
-                <span class="oj-web-applayout-header-title" title="Application Name" data-bind="text: appName"></span>
-              </div>
-              <div class="oj-flex-bar-end">
-                <!-- Responsive Toolbar -->
-                <div data-bind="ojComponent: {component:'ojToolbar'}">
-                  <button data-bind="ojComponent: {component:'ojButton',
+                                </button>
+                            </div>
+                            <div data-bind="css: smScreen() ? 'oj-flex-bar-center-absolute' : 'oj-flex-bar-middle oj-sm-align-items-baseline'">
+                                <span class="oj-web-applayout-header-title" title="Application Name" data-bind="text: appName"></span>
+                            </div>
+                            <div class="oj-flex-bar-end">
+                                <!-- Responsive Toolbar -->
+                                <div id="login" data-bind="ojComponent: {component: 'ojCheckboxset'}">
+                                    <label id="agreeId">License Agreement </label>
+                                    <div id="checkboxSetAgreeId" aria-labelledby="agreeId"
+                                         data-bind=
+                                         "ojComponent: {
+                                            component: 'ojCheckboxset', 
+                                            value: agreement}">
+                                        <span class="oj-choice-row">
+                                            <input id="login" type="checkbox" value="agree">
+                                            <label for="login">Log In</label>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div data-bind="ojComponent: {component:'ojToolbar'}">
+                                    <button data-bind="ojComponent: {component:'ojButton',
                     label: 'Search', display: 'icons', chroming: 'half',
                     icons: {start:'oj-fwk-icon-magnifier oj-fwk-icon'}}">
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div id="appNav" role="navigation" data-bind="ojComponent: {component: 'ojNavigationList',
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="appNav" role="navigation" data-bind="ojComponent: {component: 'ojNavigationList',
               navigationLevel: 'application', 
               item: {template: 'navTemplate'},
               beforeSelect: selectHandler,
               selection: router.stateId, 
               data: dataSource, edge: 'top'}"
-              class="oj-web-applayout-navbar oj-sm-only-hide oj-web-applayout-max-width oj-navigationlist-item-dividers oj-md-condense oj-md-justify-content-center oj-lg-justify-content-flex-end">
+                             class="oj-web-applayout-navbar oj-sm-only-hide oj-web-applayout-max-width oj-navigationlist-item-dividers oj-md-condense oj-md-justify-content-center oj-lg-justify-content-flex-end">
+                        </div>
+                    </header>
+                    <div class="oj-web-applayout-content oj-web-applayout-max-width">
+                        <div class="oj-flex oj-flex-items-pad">
+                            <div class="oj-flex-item">
+                                <div id="content" role="main" class="oj-panel" data-bind="ojModule: router.moduleConfig"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </header>
-          <div class="oj-web-applayout-content oj-web-applayout-max-width">
-            <div class="oj-flex oj-flex-items-pad">
-              <div class="oj-flex-item">
-                <div id="content" role="main" class="oj-panel" data-bind="ojModule: router.moduleConfig"></div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </body>
 </html>
