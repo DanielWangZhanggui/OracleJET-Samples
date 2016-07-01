@@ -4,3 +4,5 @@
 /src/js/libs/
 /src/css/libs/
 /hybrid/platforms/
+bower_components
+node_modules
