@@ -1,0 +1,33 @@
+<div>
+  <button id="back" data-bind="click: goBack, ojComponent: { component: 'ojButton',
+                               icons: {start: 'oj-fwk-icon-caret-start oj-fwk-icon'},
+                               label: 'Back'}"></button>
+  <button id="cust" data-bind="click: goCust, ojComponent: { component: 'ojButton',
+                               label: 'Go to Customer List'}"></button>
+  <ul id="listview" data-bind="ojComponent: { component: 'ojListView',
+                               data: dataSource,
+                               optionChange: gotoContent,
+                               item: { template: 'order-template' },
+                               selectionMode: 'single' }">
+  </ul>
+</div>
+
+<!-- Template to display a record -->
+<script type="text/html" id="order-template">
+  <li data-bind="attr: {id: $data['name']}">
+    <div>
+      <div class="oj-flex oj-flex-items-pad row">
+        <div class="oj-flex-item">
+          <span class="header" data-bind="text: $data['name']"></span>
+        </div>
+      </div>
+      <div class="oj-flex oj-flex-items-pad row">
+        <div class="oj-lg-4 oj-sm-12 oj-flex-item">
+          <span class="data">
+            <b>Id: </b><span data-bind="text: $data['id']"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </li>
+</script>

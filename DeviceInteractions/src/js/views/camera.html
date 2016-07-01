@@ -1,0 +1,22 @@
+<!--
+ Copyright (c) 2014, 2016, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+-->
+<div class="oj-hybrid-padding">
+    <h3>Camera Sample</h3>
+    <div>
+        <button data-bind="click: takePicture">Take Picture!</button>
+        <br/><br/>
+        <ul data-bind="foreach: pics" class="oj-flex oj-flex-items-pad">
+            <li style="list-style: none" class="oj-flex-item">
+                <input type="image"
+                       style="border:1px solid black"
+                       data-bind="attr:{src: $data}"
+                       width="250"
+                       height="250"
+                       alt="No picture taken."/>
+            </li>
+        </ul>
+    </div>
+
+</div>

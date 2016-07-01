@@ -1,0 +1,58 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 25, 2016, 4:41:43 PM
+    Author     : jabrock
+*/
+@font-face{
+    font-family:'AppFont';
+    src:url("fonts/App_iconfont.woff") format("woff");
+    font-weight:normal;
+    font-style:normal
+}
+
+.demo-centering-container {
+    text-align: center;
+    padding: 0;
+}
+.demo-icon-font,.demo-icon-font-24{
+    font-family:AppFont;
+    font-size:16px;
+    line-height:1;
+    display:inline-block;
+    font-weight:normal;
+    speak:none;
+    font-style:normal;
+    font-variant:normal;
+    text-transform:none;
+    text-align:center;
+    -moz-box-sizing:content-box;
+    box-sizing:content-box;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale
+}
+.demo-icon-font:before,.demo-icon-font-24:before{
+    display:inline-block
+}
+.demo-icon-font-24{
+    font-size:24px
+}
+.demo-bookmark-icon-16:before{
+    content:"\e606"
+}
+.demo-grid-icon-16:before{
+    content:"\e607"
+}
+.demo-list-icon-16:before{
+    content:"\e608"
+}
+.demo-gear-icon-16:before{
+    content:"\e609"
+}
+.demo-home-icon-24:before{
+    content:"\e600"
+}
+

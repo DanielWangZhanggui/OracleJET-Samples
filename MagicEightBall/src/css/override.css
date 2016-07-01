@@ -1,0 +1,96 @@
+/*
+    Document   : override
+    Created on : <date>
+    Author     : <author>
+    Description:
+        This is where any of your application specific styles should be included
+*/
+.demo-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.demo-dashboard-icon:before {
+  content: url("images/dashboard.svg");
+}
+
+.demo-customers-icon:before {
+  content: url("images/customers.svg");
+}
+
+.demo-incidents-icon:before {
+  content: url("images/incidents.svg");
+}
+
+.demo-suppliers-icon:before {
+  content: url("images/suppliers.svg");
+}
+
+.demo-profile-icon:before {
+  content: url("images/profile.svg");
+}
+
+.demo-ifixitfast-icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+html:not([dir="rtl"]) .demo-ifixitfast-icon {
+  padding-right: 5px;
+}
+html[dir="rtl"] .demo-ifixitfast-icon {
+  padding-left: 5px;
+}
+.demo-ifixitfast-icon:before {
+  content: url("images/ifixitfast.svg");
+}
+
+.demo-james-icon {
+  width: 160px;
+  height: 160px;
+  display: block;
+  padding-top: 1.75rem;
+  padding-bottom: 1.25rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.demo-james-icon:before {
+  content: url("images/james_avatar.png");
+}
+
+.demo-logo {
+  font-size: 1.75rem;
+}
+
+.demo-profile-name {
+  opacity: 0.7;
+  font-size: 1.75rem;
+  text-align: center;
+  padding-bottom: 2rem;
+  color: #ffffff;
+}
+
+@-webkit-keyframes shakeme {
+        0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
+	10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); }
+	30% { -webkit-transform: translate(0px, 2px) rotate(0deg); }
+	40% { -webkit-transform: translate(1px, -1px) rotate(1deg); }
+	50% { -webkit-transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { -webkit-transform: translate(-3px, 1px) rotate(0deg); }
+	70% { -webkit-transform: translate(2px, 1px) rotate(-1deg); }
+	80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); }
+	90% { -webkit-transform: translate(2px, 2px) rotate(0deg); }
+	100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
+}
+.shakeme:hover,
+.shakeme:focus {
+	-webkit-animation-name: shakeme;
+	-webkit-animation-duration: 0.8s;
+	-webkit-transform-origin:50% 50%;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+.shakeme {
+	display:inline-block
+}
