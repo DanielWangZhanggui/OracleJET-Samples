@@ -1,0 +1,8 @@
+/hybrid/www/
+/hybrid/merges/
+/hybrid/plugins/
+/src/js/libs/
+/src/css/libs/
+/hybrid/platforms/
+bower_components
+node_modules
