@@ -73,7 +73,7 @@
 
 .demo-overlaid-paging-control {
     position: absolute;
-    bottom: 0;
+    bottom: -45px;
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);

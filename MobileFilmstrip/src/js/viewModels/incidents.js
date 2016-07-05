@@ -11,12 +11,6 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojbutton', 'ojs/ojfilmstrip', '
                 var self = this;
 
                 self.chemicals = [
-                    {name: 'Hydrogen'},
-                    {name: 'Helium'},
-                    {name: 'Lithium'},
-                    {name: 'Beryllium'},
-                    {name: 'Boron'},
-                    {name: 'Carbon'}
                 ];
                 self.pagingModel = null;
 
