@@ -8,4 +8,4 @@ You can also open any of the individual projects directly in NetBeans with a sim
 
 
 ###Notice###
-*This site and code is not sanctioned or supported by Oracle.  These are my own works and ideas.*
+***This site and code is not sanctioned or supported by Oracle.  These are my own works and ideas.***
