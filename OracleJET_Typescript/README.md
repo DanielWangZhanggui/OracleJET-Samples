@@ -26,7 +26,7 @@ You should now be able to run the project from any server calling index.html. If
   http-server -c-1 -o
 ```  
   
-##Resources##
+##Credit##
 
 * I used a lot of information from David Pizzi's blog post: [STRONG TYPING WITH KNOCKOUTJS AND REQUIREJS](http://blog.scottlogic.com/2015/06/02/StrongTypingWithKnockoutJSAndRequireJS.html)
 
