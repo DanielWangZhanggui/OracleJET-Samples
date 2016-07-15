@@ -12,7 +12,7 @@ Install TypeScript
   npm install -g typescript
 ```
 
-Clone this project and then run the following yoeman command from the project root and then compile the typescript files
+Clone this project and then run the following yeoman command from the project root and then compile the typescript files
 ```javascript
   yo oraclejet:restore
   tsc
