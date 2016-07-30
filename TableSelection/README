@@ -1,0 +1,3 @@
+Run bower install to setup project.
+
+This is a simple ojTable with the content of the currently selected row bound to a <div> element.

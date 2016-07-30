@@ -1,0 +1,13 @@
+{
+  "name": "Table_Selection",
+  "version": "1.0.0",
+  "main": "path/to/main.css",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "oraclejet": "2.0.2"
+  },
+  "devDependencies": {}
+}
