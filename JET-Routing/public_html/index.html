@@ -47,19 +47,8 @@
                             </div>
                             <div class="oj-flex-bar-end">
                                 <!-- Responsive Toolbar -->
-                                <div id="login" data-bind="ojComponent: {component: 'ojCheckboxset'}">
-                                    <label id="agreeId">License Agreement </label>
-                                    <div id="checkboxSetAgreeId" aria-labelledby="agreeId"
-                                         data-bind=
-                                         "ojComponent: {
-                                            component: 'ojCheckboxset', 
-                                            value: agreement}">
-                                        <span class="oj-choice-row">
-                                            <input id="login" type="checkbox" value="agree">
-                                            <label for="login">Log In</label>
-                                        </span>
-                                    </div>
-                                </div>
+								<label id="switchLabel" for="switch" class="oj-label-inline">I am the Admin</label>
+								<input id="switch" data-bind="ojComponent: {component: 'ojSwitch', value: isAdmin}" />
                                 <div data-bind="ojComponent: {component:'ojToolbar'}">
                                     <button data-bind="ojComponent: {component:'ojButton',
                     label: 'Search', display: 'icons', chroming: 'half',

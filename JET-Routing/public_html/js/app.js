@@ -30,7 +30,7 @@ requirejs.config(
 
 require(['ojs/ojcore', 'knockout', 'jquery',
     'ojs/ojknockout', 'ojs/ojbutton', 'ojs/ojmenu', 'ojs/ojtoolbar', 'ojs/ojnavigationlist',
-    'ojs/ojoffcanvas', 'ojs/ojarraytabledatasource', 'ojs/ojmodule', 'ojs/ojrouter', 'text', 'ojs/ojcheckboxset'],
+    'ojs/ojoffcanvas', 'ojs/ojarraytabledatasource', 'ojs/ojmodule', 'ojs/ojrouter', 'text', 'ojs/ojcheckboxset', 'ojs/ojswitch'],
         function (oj, ko, $)
         {
             'use strict';
@@ -80,15 +80,10 @@ require(['ojs/ojcore', 'knockout', 'jquery',
                 },
                 {
                     name: 'Admin', 
-                    id: 'admin', 
+                    id: 'admin',
                     canEnter: function(){
-                        var licenseAgreement = ko.dataFor(document.getElementById('login')).agreement();
-                        if(licenseAgreement == 'agree'){
-                        return true;
-                    } else {
-                        return false;
-                    }
-                    }
+                        return ko.dataFor(document.getElementById('switch')).isAdmin();
+                    }					
                 }
             ];
 
@@ -98,7 +93,7 @@ require(['ojs/ojcore', 'knockout', 'jquery',
             {
                 var self = this;
 
-                self.agreement = ko.observable('checked');
+                self.isAdmin = ko.observable(false);
                 // Application Name used in header
                 self.appName = 'Router Demo';
 
