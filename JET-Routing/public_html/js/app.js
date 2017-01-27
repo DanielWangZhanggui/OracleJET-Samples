@@ -14,7 +14,7 @@ requirejs.config(
                         'ojL10n': 'libs/oraclejet/dist/js/libs/oj/ojL10n',
                         'ojtranslations': 'libs/oraclejet/dist/js/libs/oj/resources',
                         'text': 'libs/text/text',
-                        'promise': 'libs/es6-promise/promise.min',
+                        'promise': 'libs/es6-promise/es6-promise.min',
                         'hammerjs': 'libs/hammerjs/hammer.min',
                         'signals': 'libs/js-signals/dist/signals.min',
                         'ojdnd': 'libs/oraclejet/dist/js/libs/dnd-polyfill/dnd-polyfill-1.0.0.min'

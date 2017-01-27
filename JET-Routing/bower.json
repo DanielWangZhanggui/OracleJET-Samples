@@ -1,5 +1,5 @@
 {
-  "name": "JETBowerTest",
+  "name": "JET Router Sample",
   "authors": [
     "peppertech <peppertech@gmail.com>"
   ],
@@ -23,6 +23,6 @@
   ],
   "dependencies": {
     "text": "~2.0.12",
-    "oraclejet": "~2.0.1"
+    "oraclejet": "~2.3.0"
   }
 }
